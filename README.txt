@@ -4,4 +4,4 @@
 Для запуска требуется установить необходимые пакеты и запустить тест, поочерёдно вызвав команды в консоли. 
 
 pip install -r requirements\requirements.txt
-pytest
+pytest -v

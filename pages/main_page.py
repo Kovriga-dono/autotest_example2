@@ -48,7 +48,7 @@ class MainPage(BasePage):
         self.find(lastname_selector).send_keys(contact.last_name)
         self.find(category_selector).send_keys(contact.category)
         self.find(birthday_selector).send_keys(contact.birthday)
-        self.find(addres_selector).click()
+        self.find(firstname_selector).click()
         self.find(addres_selector).send_keys(contact.address)
         self.find(button_selector).click()
 #берём счетчик после создания контакта
