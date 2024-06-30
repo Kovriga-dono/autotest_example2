@@ -1,56 +1,27 @@
 from pages.base_page import BasePage
-from selenium.webdriver.common.by import By
 import re
-from models.contact import Fields
-from models.lib import Filling
-
-# данные контакта (вариант с генерацией)
-contact = Fields(Filling.letters(5),
-                 Filling.letters(10),
-                 Filling.categ(),
-                 Filling.numbers(8),
-                 "June 11, 2001")
-
-# данные контакта
-# contact = Fields('John',
-#                  'Doe',
-#                  'Workers',
-#                  '0098231',
-#                  'June 11, 2001')
-
-# поля для заполнения
-firstname_selector = (By.XPATH, '//div[@class="middleCenterInner"]/div/table/tbody/tr[2]/td[2]/input')
-lastname_selector = (By.XPATH, '//div[@class="middleCenterInner"]/div/table/tbody/tr[3]/td[2]/input')
-category_selector = (By.XPATH, '//div[@class="middleCenterInner"]/div/table/tbody/tr[4]/td[2]/select')
-birthday_selector = (By.XPATH, '//div[@class="middleCenterInner"]/div/table/tbody/tr[5]/td[2]/input')
-addres_selector = (By.XPATH, '//div[@class="middleCenterInner"]/div/table/tbody/tr[6]/td[2]/textarea')
-
-# счетчик контактов
-counter_selector = (By.XPATH, '//div[@dir="ltr"]')
-
-# кнопка создания контакта
-button_selector = (By.XPATH, '//div[@class="middleCenterInner"]/div/table/tbody/tr[7]/td/button[2]')
+import models.lib
 
 
 # тест в Chrome
 class MainPage(BasePage):
 
     def open(self):
-        self.browser.get('https://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCellList')
+        self.browser.get(models.lib.test_page)
 
     def fill_contact_page(self):
         # берем оригинальное значение счетчика
-        c = re.search(r'\d+$', self.find(counter_selector).text).group()
+        c = re.search(r'\d+$', self.find(models.lib.counter_selector).text).group()
         # заполняем контактные данные
-        self.find(firstname_selector).send_keys(contact.first_name)
-        self.find(lastname_selector).send_keys(contact.last_name)
-        self.find(category_selector).send_keys(contact.category)
-        self.find(birthday_selector).send_keys(contact.birthday)
-        self.find(firstname_selector).click()
-        self.find(addres_selector).send_keys(contact.address)
-        self.find(button_selector).click()
+        self.find(models.lib.firstname_selector).send_keys(models.lib.contact.first_name)
+        self.find(models.lib.lastname_selector).send_keys(models.lib.contact.last_name)
+        self.find(models.lib.category_selector).send_keys(models.lib.contact.category)
+        self.find(models.lib.birthday_selector).send_keys(models.lib.contact.birthday)
+        self.find(models.lib.firstname_selector).click()
+        self.find(models.lib.addres_selector).send_keys(models.lib.contact.address)
+        self.find(models.lib.button_selector).click()
         # берём счетчик после создания контакта
-        b = re.search(r'\d+$', self.find(counter_selector).text).group()
+        b = re.search(r'\d+$', self.find(models.lib.counter_selector).text).group()
         # сравниваем счетчик до и после создания контакта
         assert int(b) == int(c) + 1
 
@@ -59,18 +30,18 @@ class MainPage(BasePage):
 class MainPageE(BasePage):
 
     def open_e(self):
-        self.browser.get('https://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCellList')
+        self.browser.get(models.lib.test_page)
 
     def fill_contact_page_e(self):
-        c = re.search(r'\d+$', self.find(counter_selector).text).group()
-        self.find(firstname_selector).send_keys(contact.first_name)
-        self.find(lastname_selector).send_keys(contact.last_name)
-        self.find(category_selector).send_keys(contact.category)
-        self.find(birthday_selector).send_keys(contact.birthday)
-        self.find(firstname_selector).click()
-        self.find(addres_selector).send_keys(contact.address)
-        self.find(button_selector).click()
-        b = re.search(r'\d+$', self.find(counter_selector).text).group()
+        c = re.search(r'\d+$', self.find(models.lib.counter_selector).text).group()
+        self.find(models.lib.firstname_selector).send_keys(models.lib.contact.first_name)
+        self.find(models.lib.lastname_selector).send_keys(models.lib.contact.last_name)
+        self.find(models.lib.category_selector).send_keys(models.lib.contact.category)
+        self.find(models.lib.birthday_selector).send_keys(models.lib.contact.birthday)
+        self.find(models.lib.firstname_selector).click()
+        self.find(models.lib.addres_selector).send_keys(models.lib.contact.address)
+        self.find(models.lib.button_selector).click()
+        b = re.search(r'\d+$', self.find(models.lib.counter_selector).text).group()
         assert int(b) == int(c) + 1
 
 
@@ -78,16 +49,16 @@ class MainPageE(BasePage):
 class MainPageF(BasePage):
 
     def open_e(self):
-        self.browser.get('https://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCellList')
+        self.browser.get(models.lib.test_page)
 
     def fill_contact_page_f(self):
-        c = re.search(r'\d+$', self.find(counter_selector).text).group()
-        self.find(firstname_selector).send_keys(contact.first_name)
-        self.find(lastname_selector).send_keys(contact.last_name)
-        self.find(category_selector).send_keys(contact.category)
-        self.find(birthday_selector).send_keys(contact.birthday)
-        self.find(firstname_selector).click()
-        self.find(addres_selector).send_keys(contact.address)
-        self.find(button_selector).click()
-        b = re.search(r'\d+$', self.find(counter_selector).text).group()
+        c = re.search(r'\d+$', self.find(models.lib.counter_selector).text).group()
+        self.find(models.lib.firstname_selector).send_keys(models.lib.contact.first_name)
+        self.find(models.lib.lastname_selector).send_keys(models.lib.contact.last_name)
+        self.find(models.lib.category_selector).send_keys(models.lib.contact.category)
+        self.find(models.lib.birthday_selector).send_keys(models.lib.contact.birthday)
+        self.find(models.lib.firstname_selector).click()
+        self.find(models.lib.addres_selector).send_keys(models.lib.contact.address)
+        self.find(models.lib.button_selector).click()
+        b = re.search(r'\d+$', self.find(models.lib.counter_selector).text).group()
         assert int(b) == int(c) + 1
