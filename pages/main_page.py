@@ -40,6 +40,8 @@ class MainPage(BasePage):
     def open(self):
         self.browser.get('https://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCellList')
 
+
+
     def fill_contact_page(self):
 #берем оригинальное значение счетчика
         c = re.search(r'\d+$', self.find(counter_selector).text).group()
@@ -54,4 +56,48 @@ class MainPage(BasePage):
 #берём счетчик после создания контакта
         b = re.search(r'\d+$', self.find(counter_selector).text).group()
 #сравниваем счетчик до и после создания контакта
+        assert int(b) == int(c) + 1
+
+
+#тест в EDGE
+class MainPageE(BasePage):
+    def __init__(self, browser_e):
+        super().__init__(browser_e)
+
+    def open_e(self):
+        self.browser.get('https://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCellList')
+
+    def fill_contact_page_e(self):
+        c = re.search(r'\d+$', self.find(counter_selector).text).group()
+        self.find(firstname_selector).send_keys(contact.first_name)
+        self.find(lastname_selector).send_keys(contact.last_name)
+        self.find(category_selector).send_keys(contact.category)
+        self.find(birthday_selector).send_keys(contact.birthday)
+        self.find(firstname_selector).click()
+        self.find(addres_selector).send_keys(contact.address)
+        self.find(button_selector).click()
+#берём счетчик после создания контакта
+        b = re.search(r'\d+$', self.find(counter_selector).text).group()
+#сравниваем счетчик до и после создания контакта
+        assert int(b) == int(c) + 1
+
+
+#тесе FireFox
+class MainPageF(BasePage):
+    def __init__(self, browser_f):
+        super().__init__(browser_f)
+
+    def open_e(self):
+        self.browser.get('https://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCellList')
+
+    def fill_contact_page_f(self):
+        c = re.search(r'\d+$', self.find(counter_selector).text).group()
+        self.find(firstname_selector).send_keys(contact.first_name)
+        self.find(lastname_selector).send_keys(contact.last_name)
+        self.find(category_selector).send_keys(contact.category)
+        self.find(birthday_selector).send_keys(contact.birthday)
+        self.find(firstname_selector).click()
+        self.find(addres_selector).send_keys(contact.address)
+        self.find(button_selector).click()
+        b = re.search(r'\d+$', self.find(counter_selector).text).group()
         assert int(b) == int(c) + 1
