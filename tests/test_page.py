@@ -1,7 +1,5 @@
 import pages.main_page
-from pages.main_page import MainPageE
 from conftest import browser
-from time import sleep
 
 
 #запускает тест для браузера Chome
