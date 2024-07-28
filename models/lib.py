@@ -42,9 +42,4 @@ contact = Fields(Filling.letters(5),
                  Filling.numbers(8),
                  "June 11, 2001")
 
-# данные контакта
-# contact = Fields('John',
-#                  'Doe',
-#                  'Workers',
-#                  '0098231',
-#                  'June 11, 2001')
+
