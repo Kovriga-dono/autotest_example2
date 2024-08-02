@@ -18,7 +18,8 @@ addres_selector = (By.XPATH, '//div[@class="middleCenterInner"]/div/table/tbody/
 
 catt = ('Friends', 'Coworkers', 'Family', 'Business', 'Contacts')
 
-test_page = ('https://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCellList')
+test_func = ('https://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCellList')
+
 
 class Filling:
 
@@ -35,11 +36,9 @@ class Filling:
         return cho
 
 
-# данные контакта (вариант с генерацией)
 contact = Fields(Filling.letters(5),
                  Filling.letters(10),
                  Filling.categ(),
                  Filling.numbers(8),
                  "June 11, 2001")
-
-
+# (корректно сгенерировать дату по нужному формату пока не получается)

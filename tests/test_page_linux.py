@@ -1,11 +1,14 @@
 import pages.main_page
 import pages.base_page
+from conftest import browser
 import allure
 import os
 os = os.name
 
-if os == 'nt':
-#запускает тест для браузера Chome
+if os == 'posix':
+
+    # запускает тест для браузера Chome
+
     @allure.feature('autotest example')
     @allure.story('filling Chrome')
     def test_fill_contact(browser):
@@ -21,21 +24,6 @@ if os == 'nt':
             main_pageс.fill_contact_page()
         with allure.step('close browser'):
             browser.quit()
-
-
-# запускает тест для браузера EDGE
-    @allure.feature('autotest example')
-    @allure.story('filling Edge')
-    def test_fill_contact_e(browser_e):
-        with allure.step('open browser Edge'):
-            main_page = pages.main_page.MainPage(browser_e)
-        with allure.step('open page'):
-            main_page.open()
-        with allure.step('filling data'):
-            main_pagee = pages.main_page.MainPage(browser_e)
-            main_pagee.fill_contact_page()
-        with allure.step('close browser'):
-            browser_e.quit()
 
 
 # запускает тест для браузера FireFox
