@@ -18,7 +18,8 @@ def test_fill_contact(browser):
 def test_fill_contact_e(browser_e):
     main_page = pages.main_page.MainPageE(browser_e)
     main_page.open()
-    main_page.fill_contact_page_e()
+    main_pagee = pages.main_page.MainPage(browser_e)
+    main_pagee.fill_contact_page()
     browser_e.quit()
 
 
@@ -26,5 +27,6 @@ def test_fill_contact_e(browser_e):
 def test_fill_contact_f(browser_f):
     main_page = pages.main_page.MainPageF(browser_f)
     main_page.open()
-    main_page.fill_contact_page_f()
+    main_pagef = pages.main_page.MainPage(browser_f)
+    main_pagef.fill_contact_page()
     browser_f.quit()
