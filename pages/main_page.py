@@ -3,16 +3,18 @@ import re
 import models.lib
 
 
-# тест в Chrome
+# открываем браузер
 class MainPage(BasePage):
+
 
     def open(self):
         self.browser.get(models.lib.test_page)
 
+#наполняем данными
     def fill_contact_page(self):
-        # берем оригинальное значение счетчика
+# берем оригинальное значение счетчика
         c = re.search(r'\d+$', self.find(models.lib.counter_selector).text).group()
-        # заполняем контактные данные
+# заполняем контактные данные
         self.find(models.lib.firstname_selector).send_keys(models.lib.contact.first_name)
         self.find(models.lib.lastname_selector).send_keys(models.lib.contact.last_name)
         self.find(models.lib.category_selector).send_keys(models.lib.contact.category)
@@ -20,22 +22,10 @@ class MainPage(BasePage):
         self.find(models.lib.firstname_selector).click()
         self.find(models.lib.addres_selector).send_keys(models.lib.contact.address)
         self.find(models.lib.button_selector).click()
-        # берём счетчик после создания контакта
+# берём счетчик после создания контакта
         b = re.search(r'\d+$', self.find(models.lib.counter_selector).text).group()
-        # сравниваем счетчик до и после создания контакта
+# сравниваем счетчик до и после создания контакта
         assert int(b) == int(c) + 1
 
 
-# тест в EDGE
-class MainPageE(BasePage):
 
-    def open(self):
-        self.browser.get(models.lib.test_page)
-
-
-
-# тест FireFox
-class MainPageF(BasePage):
-
-    def open(self):
-        self.browser.get(models.lib.test_page)

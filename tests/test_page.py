@@ -1,32 +1,51 @@
 import pages.main_page
 import pages.base_page
 from conftest import browser
-
+import allure
 
 # запускает тест для браузера Chome
+@allure.feature('autotest example')
+@allure.story('filling Chrome')
 def test_fill_contact(browser):
     # открываем браузер
-    main_page = pages.main_page.MainPage(browser)
+    with allure.step('open browser Chrome'):
+        main_page = pages.main_page.MainPage(browser)
     # переходим на тестируемую страницу
-    main_page.open()
+    with allure.step('open page'):
+        main_page.open()
     # заполняем данные контакта; создаем контакт; проверяем счетчик
-    main_page.fill_contact_page()
-    browser.quit()
+    with allure.step('filling data'):
+        main_pageс = pages.main_page.MainPage(browser)
+        main_pageс.fill_contact_page()
+    with allure.step('close browser'):
+        browser.quit()
 
 
 # запускает тест для браузера EDGE
+@allure.feature('autotest example')
+@allure.story('filling Edge')
 def test_fill_contact_e(browser_e):
-    main_page = pages.main_page.MainPageE(browser_e)
-    main_page.open()
-    main_pagee = pages.main_page.MainPage(browser_e)
-    main_pagee.fill_contact_page()
-    browser_e.quit()
+    with allure.step('open browser Edge'):
+        main_page = pages.main_page.MainPage(browser_e)
+    with allure.step('open page'):
+        main_page.open()
+    with allure.step('filling data'):
+        main_pagee = pages.main_page.MainPage(browser_e)
+        main_pagee.fill_contact_page()
+    with allure.step('close browser'):
+        browser_e.quit()
 
 
 # запускает тест для браузера FireFox
+@allure.feature('autotest example')
+@allure.story('filling FireFox')
 def test_fill_contact_f(browser_f):
-    main_page = pages.main_page.MainPageF(browser_f)
-    main_page.open()
-    main_pagef = pages.main_page.MainPage(browser_f)
-    main_pagef.fill_contact_page()
-    browser_f.quit()
+    with allure.step('open browser FireFox'):
+        main_page = pages.main_page.MainPage(browser_f)
+    with allure.step('open page'):
+        main_page.open()
+    with allure.step('filling data'):
+        main_pagef = pages.main_page.MainPage(browser_f)
+        main_pagef.fill_contact_page()
+    with allure.step('close browser'):
+        browser_f.quit()
