@@ -9,16 +9,19 @@ class MainPage(BasePage):
     def open(self):
         self.browser.get(models.lib.test_func)
 
-    # наполняем данными
-    def fill_contact_page(self):
-        # берем оригинальное значение счетчика
-        c = re.search(r'\d+$', self.find(models.lib.counter_selector).text).group()
-        # заполняем контактные данные
+
+
+    def fill_contact_name(self):
         self.find(models.lib.firstname_selector).send_keys(models.lib.contact.first_name)
+    def fill_contact_lastname(self):
         self.find(models.lib.lastname_selector).send_keys(models.lib.contact.last_name)
+    def fill_contact_category(self):
         self.find(models.lib.category_selector).send_keys(models.lib.contact.category)
+    def fill_contact_bday(self):
         self.find(models.lib.birthday_selector).send_keys(models.lib.contact.birthday)
         self.find(models.lib.firstname_selector).click()
+    def fill_contact_addres(self):
+        c = re.search(r'\d+$', self.find(models.lib.counter_selector).text).group()
         self.find(models.lib.addres_selector).send_keys(models.lib.contact.address)
         self.find(models.lib.button_selector).click()
         # берём счетчик после создания контакта
