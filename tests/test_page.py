@@ -28,7 +28,7 @@ def test_fill_contact(browser):
 
 
 @allure.feature('autotest example')
-@allure.story('filling Chrome')
+@allure.story('filling FireFox')
 def test_fill_contact_f(browser_f):
     # открываем браузер
     with allure.step('open browser FireFox'):
