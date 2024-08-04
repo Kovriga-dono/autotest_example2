@@ -51,7 +51,7 @@ if os.name == 'nt':
     @allure.story('filling EDGE')
     def test_fill_contact_e(browser_e):
         # открываем браузер
-        with allure.step('open browser Chrome'):
+        with allure.step('open browser Edge'):
             main_page = pages.main_page.MainPage(browser_e)
             # переходим на тестируемую страницу
         main_page.open()
