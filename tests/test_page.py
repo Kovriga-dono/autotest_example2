@@ -15,16 +15,14 @@ def test_fill_contact(browser):
     with allure.step('open browser Chrome'):
         main_page = pages.main_page.MainPage(browser)
         # переходим на тестируемую страницу
-    with allure.step('open page'):
-        main_page.open()
+    main_page.open()
     # заполняем данные контакта; создаем контакт; проверяем счетчик
-    with allure.step('filling data'):
-        main_pageс = pages.main_page.MainPage(browser)
-        main_pageс.fill_contact_name()
-        main_pageс.fill_contact_lastname()
-        main_pageс.fill_contact_category()
-        main_pageс.fill_contact_bday()
-        main_pageс.fill_contact_addres()
+    main_pageс = pages.main_page.MainPage(browser)
+    main_pageс.fill_contact_name()
+    main_pageс.fill_contact_lastname()
+    main_pageс.fill_contact_category()
+    main_pageс.fill_contact_bday()
+    main_pageс.fill_contact_addres()
     with allure.step('close browser'):
         browser.quit()
 
@@ -36,16 +34,14 @@ def test_fill_contact_f(browser_f):
     with allure.step('open browser FireFox'):
         main_page = pages.main_page.MainPage(browser_f)
         # переходим на тестируемую страницу
-    with allure.step('open page'):
-        main_page.open()
+    main_page.open()
     # заполняем данные контакта; создаем контакт; проверяем счетчик
-    with allure.step('filling data'):
-        main_pagef = pages.main_page.MainPage(browser_f)
-        main_pagef.fill_contact_name()
-        main_pagef.fill_contact_lastname()
-        main_pagef.fill_contact_category()
-        main_pagef.fill_contact_bday()
-        main_pagef.fill_contact_addres()
+    main_pagef = pages.main_page.MainPage(browser_f)
+    main_pagef.fill_contact_name()
+    main_pagef.fill_contact_lastname()
+    main_pagef.fill_contact_category()
+    main_pagef.fill_contact_bday()
+    main_pagef.fill_contact_addres()
     with allure.step('close browser'):
         browser_f.quit()
 
@@ -58,16 +54,14 @@ if os.name == 'nt':
         with allure.step('open browser Chrome'):
             main_page = pages.main_page.MainPage(browser_e)
             # переходим на тестируемую страницу
-        with allure.step('open page'):
-            main_page.open()
+        main_page.open()
         # заполняем данные контакта; создаем контакт; проверяем счетчик
-        with allure.step('filling data'):
-            main_pagef = pages.main_page.MainPage(browser_e)
-            main_pagef.fill_contact_name()
-            main_pagef.fill_contact_lastname()
-            main_pagef.fill_contact_category()
-            main_pagef.fill_contact_bday()
-            main_pagef.fill_contact_addres()
+        main_pagee = pages.main_page.MainPage(browser_e)
+        main_pagee.fill_contact_name()
+        main_pagee.fill_contact_lastname()
+        main_pagee.fill_contact_category()
+        main_pagee.fill_contact_bday()
+        main_pagee.fill_contact_addres()
         with allure.step('close browser'):
             browser_e.quit()
 
@@ -79,15 +73,13 @@ if os.name == 'mac':
         with allure.step('open browser Chrome'):
             main_page = pages.main_page.MainPage(browser_s)
             # переходим на тестируемую страницу
-        with allure.step('open page'):
-            main_page.open()
+        main_page.open()
         # заполняем данные контакта; создаем контакт; проверяем счетчик
-        with allure.step('filling data'):
-            main_pagef = pages.main_page.MainPage(browser_s)
-            main_pagef.fill_contact_name()
-            main_pagef.fill_contact_lastname()
-            main_pagef.fill_contact_category()
-            main_pagef.fill_contact_bday()
-            main_pagef.fill_contact_addres()
+        main_pages = pages.main_page.MainPage(browser_s)
+        main_pages.fill_contact_name()
+        main_pages.fill_contact_lastname()
+        main_pages.fill_contact_category()
+        main_pages.fill_contact_bday()
+        main_pages.fill_contact_addres()
         with allure.step('close browser'):
             browser_s.quit()
